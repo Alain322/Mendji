@@ -1,5 +1,5 @@
 
-const dao = require('./dao_factory')
+const dao = require('./DaoFactory')
 
 const fetchRecommandTarif = async (depart, arrivee)=>{
     const session = dao.driver.session(dao.getDBName())

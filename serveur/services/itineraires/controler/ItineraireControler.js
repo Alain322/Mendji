@@ -2,7 +2,7 @@
  * Controler of tarification service
  */
 
-const dao_itineraire = require('../dao/dao_itineraire')
+const dao_itineraire = require('../model/dao/DaoItineraire')
 
 // retourne la liste des trajets
 

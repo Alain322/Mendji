@@ -4,7 +4,7 @@ const cors = require('cors');
 const request = require('request');
 const trajet = express.Router();
 
-let controler = require('../controler/c_itineraire')
+let controler = require('../controler/ItineraireControler')
 
 
 const file = [

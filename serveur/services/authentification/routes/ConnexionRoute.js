@@ -14,7 +14,7 @@ const SALT_PASS_ROUND = 1
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }))
 
-var expiryDate = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
+var expiryDate = new Date(Date.now() + 60 * 60 * 100);
 
 connexion.get('/connexion', async (request, response) => {
     try {
@@ -32,8 +32,8 @@ connexion.post('/connexion', (req, res) => {
     const userinfos = []
     const ctoken = md5(cname + '' + Math.random() + '' + req.body.cpassw)
 
-    console.log()
-    console.log(cpassw)
+    // console.log()
+    // console.log(cpassw)
     // req.session.user = { pseudo: cname, token: md5('' + Math.random() + '') }
     console.log(req.session)
     try {

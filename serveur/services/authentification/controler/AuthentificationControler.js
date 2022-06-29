@@ -2,8 +2,8 @@
  * incription route contrler
  */
 
-const auth_factory = require('../dao/dao_authentification')
-const user_model = require('../model/m_user')
+const auth_factory = require('../model/dao/DaoAuthentification')
+const user_model = require('../model/UserModel')
 
 // create new user
 connexionUser = async(username, password) => {

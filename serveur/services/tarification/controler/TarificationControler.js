@@ -2,7 +2,7 @@
  * Controler of tarification service
  */
 
-const dao_tarif = require('../model/dao/dao_tarification')
+const dao_tarif = require('../model/dao/DaoTraification')
 
 // retourne la liste des tarif en fonction des depart et des arrivees
 

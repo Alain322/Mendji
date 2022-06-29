@@ -1,4 +1,4 @@
-const dao = require('./dao_factory')
+const dao = require('./DaoFactory')
 
 const authentificationUser = async (username, password)=>{
     const session = dao.driver.session(dao.getDBName())

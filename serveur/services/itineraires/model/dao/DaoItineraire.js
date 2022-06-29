@@ -1,4 +1,4 @@
-const dao = require('./dao_factory')
+const dao = require('./DaoFactory')
 
 
 // selection de tous les Lieux

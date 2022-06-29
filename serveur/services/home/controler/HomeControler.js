@@ -6,8 +6,8 @@ const dao_home = require('../model/dao/DaoHome')
 const locationModel = require("../model/LocationModel")
 
 getAllLocation = async() => {
-    // var data = new Object()
-    var data = locationModel.initLocation()
+    var data = new Object()
+    // var data = locationModel.initLocation()
     try {
         var temp_data = new Array()
 
