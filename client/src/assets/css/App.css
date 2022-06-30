@@ -95,11 +95,9 @@ header, main, footer{
   background: #000;
 }
 
-
-
-
 .main-nav .logo, .scrolled .logo{
   outline: none;
+  margin-left: 4rem;
 }
 
 .main-nav .logo img{

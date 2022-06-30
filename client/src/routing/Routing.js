@@ -22,7 +22,6 @@ function Routing({wspoints}) {
 
     const routingControl = L.Routing.control({
       waypoints: points,
-      // waypoints: [L.latLng(3.9082808, 11.5329897), L.latLng(3.86667, 11.5167)],
       routeWhileDragging: true
     }).addTo(map);
 

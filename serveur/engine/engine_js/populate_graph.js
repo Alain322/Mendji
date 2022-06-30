@@ -23,11 +23,11 @@ for (var item, i = 0; item = dataset[i++];) {
   }
 
 var result = [];
-
+// suppression des doublons
 locations.filter((item, pos, self) => {
   if(self.findIndex(v => v.lieu.toLowerCase() === item.lieu.toLowerCase()) === pos){
     result.push(self[pos])
-    console.log(result.length)
+    // console.log(result.length)
   }
 });
 

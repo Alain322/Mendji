@@ -19,7 +19,7 @@ app.use(cors({
     methods: ["GET", "POST"],
     credentials: true
 }))
- 
+
 // app.use(cookieParser())
 // app.use(express.urlencoded({extended: true}))
 
@@ -51,11 +51,11 @@ const accountRoute = require('./services/authentification/routes/AccountRoute')
 // const r_multiple_it = require('./routes/multiple_it')
 
 app.use(
-    session({  
+    session({
         // key: "userId",
         secret: "subscribe",
         resave: false,
-        saveUninitialized: true,  
+        saveUninitialized: true,
         cookie:
         {
             maxAge: 3600,
@@ -96,7 +96,7 @@ var axios = require('axios');
 // })
 
 // app.post('/home', (req, res) => {
-    
+
 // })
 
 app.get('*', (req, res) => {
@@ -105,4 +105,4 @@ app.get('*', (req, res) => {
 
 app.use((_, res) => res.redirect("/"))
 
-app.listen(PORT, ()=>{console.log(`server listening at ${PORT}`)})
+app.listen(PORT, () => { console.log(`server listening at ${PORT}`) })

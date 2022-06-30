@@ -119,8 +119,8 @@ function Navigation() {
       <div className={scrollClass}>
         <nav className='navbar navbar-expand-lg navbar-default'>
           <a className="logo" href="http://localhost:3000">
-            {/* <img src='./img/logo-dark.png' alt="img" /> */}
-            <img src='./img/logo.png' alt="img"/>
+            <img src='./img/logo-dark.png' alt="img" />
+            {/* <img src='./img/logo.png' alt="img"/> */}
           </a>
           <button className="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>

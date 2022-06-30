@@ -17,7 +17,7 @@ import Navigation from './components/Navigation'
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop) 
 
-function Itineraire({locations}) {
+function Itineraire() {
     // form useref
     const inputJour = useRef('')
     const inputPeriode = useRef('')
@@ -31,7 +31,7 @@ function Itineraire({locations}) {
     // const [arrive, setArrive] = useState('')
     // const [predictionCout, setPredictionCout] = useState('')
     // const [queryLocation, setQueryLocation] = useState('')
-    const [allocations, setAllocations] = useState(null)
+    const [locations, setAllocations] = useState(null)
     const [btnPredictClicked, setBtnPredictClicked] = useState(false)
     const [recResultData, setRecResultData] = useState(null)
 
@@ -42,19 +42,18 @@ function Itineraire({locations}) {
     const setDepart = (val) => {
         inputDepart.current.value = val
     }
-    // useEffect(() => {
-    //     axios.get('http://localhost:4000/itineraire/location').then(
-    //     (response) => {
-    //         // queryLocation = response.data.data
-    //         setAllocations(response.data.data)
-    //     })
-    // }, [])
-
     const history = useHistory();
+
     useEffect(() => {
-        if(Session.get('state') === 'error'){
-            history.push('/authentification');
-        }
+        axios.get('http://localhost:4000/itineraire/location').then(
+        (response) => {
+            // queryLocation = response.data.data
+            setAllocations(response.data.data)
+        })
+        
+        // if(Session.get('state') === 'error'){
+        //     history.push('/authentification');
+        // }
         setBtnPredictClicked(false)
     }, [])
 
@@ -87,7 +86,6 @@ function Itineraire({locations}) {
             if(locations[i].lieu.toLowerCase() === inputDepart.current.value.toLowerCase()){
                 coordDepart['latitude'] = locations[i].latitude
                 coordDepart['longitude'] = locations[i].longitude
-                console.log(coordDepart)
 
                 isTrueDepart = true
             }
@@ -95,15 +93,14 @@ function Itineraire({locations}) {
                 coordArrive['latitude'] = locations[i].latitude
                 coordArrive['longitude'] = locations[i].longitude
                 isTrueArrive = true
-                console.log(coordArrive)
             }
 
             if(isTrueArrive === true && isTrueDepart === true){
-                isTrueLocation = true
                 updatePoints(coordDepart)
                 updatePoints(coordArrive)
                 // points.push(coordDepart)
                 // points.push(coordArrive)
+                isTrueLocation = true
             }
 
             i = i + 1
@@ -124,6 +121,7 @@ function Itineraire({locations}) {
             // })
             // console.log(coordDepart, '\t', coordArrive)
             scrollToRef(refStartMap)
+            isTrueLocation = false
         }else{
             alert('Impossible de trouver votre localisation')
         }
@@ -250,6 +248,7 @@ function Itineraire({locations}) {
     
         <div className="leafleft-map" ref={refStartMap}>
             {(points.length > 0)? (<AppMap wpoint={points}/>): (null)}
+            
         </div>
 
     </React.Fragment>);

@@ -16,7 +16,7 @@ const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
 
 function Tarification() {
 
-    const [locations, setLocations] = useState([]);
+    const [allocations, setAllocations] = useState([]);
 
     const refHeaderPage = useRef(null)
     // form useref
@@ -62,16 +62,13 @@ function Tarification() {
         // if (Session.get('state') === 'error') {
         //     history.push('/authentification');
         // }
-        
-        axios.get('http://localhost:4000/home', {}).then((response) => {
-            setLocations(response.data.data)
-            console.log(response.data.data)
-        })
 
-         // axios.get('http://localhost:4000/tarification/location', {}).then((response) => {
-        //     setLocations(response.data)
-        //     console.log(response.data)
-        // })
+        axios.get('http://localhost:4000/itineraire/location').then(
+            (response) => {
+                // queryLocation = response.data.data
+                setAllocations(response.data.data)
+            }
+        )
         scrollToRef(refHeaderPage)
         setBtnPredictClicked(false)
     }, [history])
@@ -219,12 +216,12 @@ function Tarification() {
 
                         <div className="container-search-item col-lg-3 col-md-5">
                             <label>Depart</label>
-                            <AutocompleteInput locations={locations} ref={inputDepart} setValue={setDepart} placeholder="Depart" />
+                            <AutocompleteInput locations={allocations} ref={inputDepart} setValue={setDepart} placeholder="Depart" />
                         </div>
 
                         <div className="container-search-item col-lg-3 col-md-5">
                             <label>Arrive</label>
-                            <AutocompleteInput locations={locations} ref={inputArrive} setValue={setArrive} placeholder="Arrive" />
+                            <AutocompleteInput locations={allocations} ref={inputArrive} setValue={setArrive} placeholder="Arrive" />
                         </div>
 
                         <div className="container-search-item col-lg col-md-12">
