@@ -82,14 +82,14 @@ function Itineraire() {
         let i = 0
         
         while((i < locations.length) && isTrueLocation === false){
-
-            if(locations[i].lieu.toLowerCase() === inputDepart.current.value.toLowerCase()){
+            console.log(locations.length)
+            if(locations[i].adresse.toLowerCase() === inputDepart.current.value.toLowerCase()){
                 coordDepart['latitude'] = locations[i].latitude
                 coordDepart['longitude'] = locations[i].longitude
 
                 isTrueDepart = true
             }
-            if(locations[i].lieu.toLowerCase() === inputArrive.current.value.toLowerCase()){
+            if(locations[i].adresse.toLowerCase() === inputArrive.current.value.toLowerCase()){
                 coordArrive['latitude'] = locations[i].latitude
                 coordArrive['longitude'] = locations[i].longitude
                 isTrueArrive = true

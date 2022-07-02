@@ -19,9 +19,9 @@ getAllLocation = async() => {
                 var temp = new Object()
                 
                 temp['id'] = index
-                temp['nom'] = item['nom']
+                temp['adresse'] = item['adresse']
                 temp['label'] = item['label']
-                temp['adress'] = item['adresse']
+                temp['localisation'] = item['localisation']
                 temp['latitude'] = item['latitude']
                 temp['longitude'] = item['longitude']
                 temp_data.push(temp)

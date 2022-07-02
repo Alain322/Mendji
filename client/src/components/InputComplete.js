@@ -67,14 +67,14 @@ class LocationTable extends React.Component {
     if (this.props.filterText.trim().length >= 1) {
       if (locations.length > 0) {
         locations.filter(
-          (element) => element.lieu.toLocaleLowerCase().includes(this.props.filterText.toLocaleLowerCase())).map(
+          (element) => element.adresse.toLocaleLowerCase().includes(this.props.filterText.toLocaleLowerCase())).map(
             (element, index) => (
               (rows.length < MAX_RESULT) ? rows.push(<div className='auto-complete-item' key={index} onClick={
                 (e) => {
-                  this.handleSelectedLocation(element.lieu)
+                  this.handleSelectedLocation(element.adresse)
                   rows = []
                 }
-              }> <Icone.GeoAlt color="#05172F" className="icone" /> &nbsp; &nbsp; &nbsp;{element.lieu}</div>
+              }> <Icone.GeoAlt color="#05172F" className="icone" /> &nbsp; &nbsp; &nbsp;{element.adresse}</div>
               ) : null
             ))
       }

@@ -100,16 +100,16 @@ function Tarification() {
         // let i = 0
 
         // while((i < locations.length) && isTrueLocation === false){
-        //     // console.log(": "+ locations[i].lieu);
+        //     // console.log(": "+ locations[i].adresse);
         //     i = i + 1
 
-        //     if(locations[i].lieu.toLowerCase() === inputDepart.current.value.toLowerCase()){
+        //     if(locations[i].adresse.toLowerCase() === inputDepart.current.value.toLowerCase()){
         //         coordDepart['latitude'] = locations[i].latitude
         //         coordDepart['longitude'] = locations[i].longitude
         //         // console.log(coordDepart)
         //         isTrueDepart = true
         //     }
-        //     if(locations[i].lieu.toLowerCase() === inputArrive.current.value.toLowerCase()){
+        //     if(locations[i].adresse.toLowerCase() === inputArrive.current.value.toLowerCase()){
         //         coordArrive['latitude'] = locations[i].latitude
         //         coordArrive['longitude'] = locations[i].longitude
         //         isTrueArrive = true

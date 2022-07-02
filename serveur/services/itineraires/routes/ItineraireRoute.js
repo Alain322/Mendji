@@ -18,7 +18,7 @@ trajet.get('/itineraire/location', async(req, res) => {
 
 trajet.get('/itineraire', cors(), async(req, res) => {
     try{
-      getAllTrajets().then((result) => {
+      getAllLocations().then((result) => {
             res.json(result)
         })
     }

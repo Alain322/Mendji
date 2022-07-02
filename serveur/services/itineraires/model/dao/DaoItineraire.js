@@ -13,7 +13,7 @@ const fetchAllLocations = async () => {
 const addNewTrajet = async (depart, arrive, trajets) => {
     const session = dao.driver.session(dao.getDBName())
     const result = await session
-    .run(`MATCH (start:Location{nom: ${depart}}), (end:Location{nom: ${end}}) CREATE (start)-[trajet:TRAJET{depart: start.nom, arrive: end.nom, tarif: ${trajets['tarif']}, periode: ${trajets['periode']}, jour: ${trajets['jour']}, embouteillage: ${trajets['embouteillage']}, duree: ${trajets['duree']}, route: ${trajets['route']}}]`)
+    .run(`MATCH (start:Location{adresse: ${depart}}), (end:Location{adresse: ${end}}) CREATE (start)-[trajet:TRAJET{depart: start.adresse, arrive: end.adresse, tarif: ${trajets['tarif']}, periode: ${trajets['periode']}, jour: ${trajets['jour']}, embouteillage: ${trajets['embouteillage']}, duree: ${trajets['duree']}, route: ${trajets['route']}}]`)
 }
 // selection de tous les trajets
 const fetchAllTrajets = async () => {
@@ -26,7 +26,7 @@ const fetchAllTrajets = async () => {
 // selection de tous les trajets a partir d'un location de depart et une destination
 const fetchTrajetsByLocation = async (depart, arrive) => {
     const session = dao.driver.session(dao.getDBName())
-    const result = await session.run(`MATCH (start:Location{nom: '${depart}'})-[trajet:TRAJET]->(end:Location{nom: '${arrive}'}) RETURN start.nom AS Depart, end.nom AS Arrive, trajet.tarif AS Tarif`)
+    const result = await session.run(`MATCH (start:Location{adresse: '${depart}'})-[trajet:TRAJET]->(end:Location{adresse: '${arrive}'}) RETURN start.nom AS Depart, end.adresse AS Arrive, trajet.tarif AS Tarif`)
     session.close()
     return result.records.map(i => i.get('n').properties)
 }

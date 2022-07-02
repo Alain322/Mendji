@@ -8,11 +8,11 @@ import Navigation from './components/Navigation'
 
 function Home(){
     
-    useEffect(() => {
-        axios.get('http://localhost:4000/home').then((response) => {
-        console.log(response.data)
-    })
-    }, [])
+    // useEffect(() => {
+    //     axios.get('http://localhost:4000/home').then((response) => {
+    //     console.log(response.data)
+    // })
+    // }, [])
 
     return (<React.Fragment>
 

@@ -10,31 +10,30 @@ getAllLocations = async () => {
         var temp_data = new Array()
         const result = await dao_itineraire.fetchAllLocations()
         if (result.length > 0) {
+
             var temp = new Array()
             result.forEach((item, index) => {
                 if (index !== 0) {
                     temp_data.push(item)
                 }
             })
-            
             // supression des doublons
             temp_data.filter((item, pos, self) => {
-               
-                    if (self.findIndex(v => v.lieu.toLowerCase() === item.lieu.toLowerCase()) === pos) {
-                        temp.push(self[pos])
-                    }
+                if((self.findIndex(v => v.adresse.toLowerCase() === item.adresse.toLowerCase()) === pos)) {
+                    temp.push(self[pos])
+                }
             });
-            
+
             data['data'] = temp
             data['success'] = true
         }
         else {
             data['success'] = false
-            data['msgerror'] = ''
+            data['msgerror'] = 'Aucun resultat'
         }
     } catch (error) {
         data['success'] = false
-        data['msgerror'] = ''
+        data['msgerror'] = error
     }
     finally {
         return data
