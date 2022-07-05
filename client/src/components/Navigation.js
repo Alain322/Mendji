@@ -3,7 +3,6 @@ import { Link, useHistory } from 'react-router-dom'
 
 import Session from 'react-session-api'
 import * as Icone from 'react-bootstrap-icons';
-import axios from "axios";
 
 function Navigation() {
 
@@ -30,13 +29,7 @@ function Navigation() {
     // alert(Session.get('token'))
     // console.log(connexionDatas)
     window.addEventListener('scroll', handleScroll)
-    //   axios.post('http://localhost:4000/session', {
-    //     connexionSate: connexionDatas
-    //   })
-    //   .then((response) => {
-    //     setconnexionDatas(response.data)
-    //     setRecResultData(response.data)
-    // })
+      
   }, [])
 
   const deconnexion = (e) => {

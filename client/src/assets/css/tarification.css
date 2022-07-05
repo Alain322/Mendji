@@ -316,18 +316,19 @@
 .t-item-price{
     font-weight: bold;
 }
-.t-item-price .price-box{
+.t-item-price .price-box, .t-item-price .price-box1{
     background-color: #FFE8E8;
     padding: .6em;
     border-radius: 5px;
 }
-.price-box h6{
+
+.price-box1 h6, .price-box h6{
     font-size: 11pt;
     font-weight: bold;
     margin: 0em;
     color: #05172F;
 }
-.price-box p{
+.price-box1 p, .price-box p{
     padding: 0px;
     margin: .3em 0px;
 }
@@ -335,7 +336,16 @@
     font-size: 12pt;
     color: #FF3131;
 }
-.price-box .price-row{
+.price-box1 .span{
+    font-size: 12pt;
+    color: #05172F;
+}
+
+.price-box1 .span{
+    font-size: 12pt;
+    color: #05172F;
+}
+.price-box1 .price-row1, .price-box .price-row{
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -349,6 +359,21 @@
 .price-row button{
     color: #FFF;
     background-color: #FF3131;
+    padding: .3em .8em;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+}
+
+.price-row1 h4{
+    color: #05172F;
+    font-weight: bold;
+    padding: 0px;
+    margin: 0px;
+}
+.price-row1 button{
+    color: #FFF;
+    background-color: #05172F;
     padding: .3em .8em;
     border-radius: 8px;
     outline: none;

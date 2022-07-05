@@ -58,7 +58,7 @@ app.use(
         saveUninitialized: true,
         cookie:
         {
-            maxAge: 3600,
+            maxAge: 36000,
             httpOnly: true
         }
     })
@@ -72,32 +72,6 @@ app.use('/', connexionRoute)
 app.use('/', sessionRoute)
 app.use('/', inscriptionRoute)
 app.use('/', accountRoute)
-
-
-var axios = require('axios');
-
-// app.get('/home', (req, res) => {
-//     // console.log(req.session.user)
-//     // if(req.session.user === 'undefined'){
-//     //     res.json({login: false, user: 'inconu'})
-//     // }
-//     // else{
-//     //     res.send({login: true, user: req.session.user})
-//     // }
-// })
-
-// app.post('/home', (req, res) => {
-//     // var cname = req.body.cname
-//     // if(cname !== ''){
-//     //     // req.session.user = cname 
-//     //     console.log(req.session)
-//     // }
-//     console.log(req.body.jour)
-// })
-
-// app.post('/home', (req, res) => {
-
-// })
 
 app.get('*', (req, res) => {
     res.send('Impossible')

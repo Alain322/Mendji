@@ -15,26 +15,34 @@ import Itineraire from './RouteItineraire';
 import Authentification from './RouteAuthentification';
 import Account from './RouteAccount';
 // import AutocompleteInput from './components/InputComplete';
+import axios from "axios";
 
 // import Equipe from './';
 import Session from 'react-session-api'
 
 import { BrowserRouter, Route, Redirect } from 'react-router-dom'
 
-Session.set('pseudo', null);
-        Session.set('token', null);
-        Session.set('state', 'error');
-        
-function App() {
 
+Session.set('pseudo', null);
+Session.set('token', null);
+Session.set('state', 'error');
+localStorage.setItem('state', JSON.stringify({ 'state': 'error', 'pseudo': null, 'token': null }))
+
+function App() {
     useEffect(() => {
-        if ((Session.get('state') !== 'success')) {
-            Session.set('pseudo', null);
-            Session.set('token', null);
-            Session.set('state', 'error');
+        if (JSON.parse(localStorage.getItem('state')).token === 'success') {
+            Session.set('pseudo', JSON.parse(localStorage.getItem('state')).pseudo);
+            Session.set('token', JSON.parse(localStorage.getItem('state')).token);
+            Session.set('state', 'success');
         }
+        // axios.get('http://localhost:4000/connexion')
+        //     .then((response) => {
+        //         // setconnexionDatas(response.data)
+        //         // setRecResultData(response.data)
+        //         console.log('')
+        //     })
     }, [])
-   
+
 
 
     const redirectToHome = () => {

@@ -16,7 +16,7 @@ const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
 
 function Tarification() {
 
-    const [allocations, setAllocations] = useState([]);
+    const [locations, setAllocations] = useState([]);
 
     const refHeaderPage = useRef(null)
     // form useref
@@ -29,34 +29,52 @@ function Tarification() {
 
     const [jour, setJour] = useState('Lundi')
     const [periode, setPeriode] = useState('6H-10H')
+    const [depart, setStateDepart] = useState('Lundi')
+    const [arrive, setStateArrive] = useState('6H-10H')
 
     const setArrive = (val) => {
         inputArrive.current.value = val
+        setStateArrive(val)
     }
 
     const setDepart = (val) => {
         inputDepart.current.value = val
+        setStateDepart(val)
     }
 
     const [predictionCout, setPredictionCout] = useState(null)
 
     const [btnPredictClicked, setBtnPredictClicked] = useState(false)
+    const [isGettingResult, setIsGettingResult] = useState(false)
 
     /* Recuperations des donnees */
 
     const [recResultData, setRecResultData] = useState(null)
 
-    const isBtnPredictClicked = (valparams) => {
-        // if(btnPredictClicked === true){
-        //     return valparams
-        // }
-        // else{
-        //     return ''
-        // }
-        return valparams
+    // const points = [
+    //     {'latitude': 3.9328292, 'longitude': 11.5223294843}, 
+    //     {'latitude': 3.9149771, 'longitude': 11.5252810487}
+    // ]
+    const [points, setPoints] = useState([])
+    const updatePoints = (pts) => {
+        let pnts = []
+        pnts = points
+        pnts.push(pts)
+        setPoints(pnts)
+    }
+
+    const isResultReady = (valparams) => {
+        if (isGettingResult === true) {
+            return valparams
+        }
+        else {
+            return ''
+        }
+        // return valparams
     }
 
     const history = useHistory();
+
 
     useEffect(() => {
         // if (Session.get('state') === 'error') {
@@ -65,100 +83,107 @@ function Tarification() {
 
         axios.get('http://localhost:4000/itineraire/location').then(
             (response) => {
-                // queryLocation = response.data.data
                 setAllocations(response.data.data)
             }
         )
         scrollToRef(refHeaderPage)
         setBtnPredictClicked(false)
+        setIsGettingResult(false)
     }, [history])
 
     const predictiontarif = (cout) => {
         let rest = 0
         let neutre = 0
+        let quick = 0
         rest = cout % 50
+        quick = cout
         neutre = cout
-        if (!(rest === 0)) {
-            if ((rest / 2) < 5) {
-                neutre = (50 - rest) + cout
-            } else {
-                neutre = cout - rest
-            }
+
+        if (rest < 25) {
+            quick = cout - rest
+            neutre = cout - (50 + rest)
+        } else {
+            quick = (50 - rest) + cout
+            neutre = cout - rest
         }
-        return '' + neutre
+
+        if (neutre < 100) {
+            neutre = 100
+        }
+
+        if (quick < 100 || quick === neutre) {
+            quick = neutre + 50
+        }
+
+        return { 'quick': quick, 'neutre': neutre }
+    }
+
+    const clearform = () => {
+        inputDepart.current.val = ''
+        inputArrive.current.val = ''
+        inputJour.current.val = ''
+        inputPeriode.current.val = ''
     }
     /* Envoie des donnees vers le server */
     const refRecommandation = useRef(null)
 
     const sendDataRecommandation = async () => {
+        setIsGettingResult(false)
+        let isTrueLocation = false
+        let isTrueDepart = false
+        let isTrueArrive = false
+        let coordDepart = {}
+        let coordArrive = {}
+        let i = 0
 
-        // let isTrueLocation = false
-        // let isTrueDepart = false
-        // let isTrueArrive = false
-        // let coordDepart =  {}
-        // let coordArrive =  {}
-        // let i = 0
+        while ((i < locations.length) && isTrueLocation === false) {
+            if (locations[i].adresse.toLowerCase() === inputDepart.current.value.toLowerCase()) {
+                coordDepart['latitude'] = locations[i].latitude
+                coordDepart['longitude'] = locations[i].longitude
 
-        // while((i < locations.length) && isTrueLocation === false){
-        //     // console.log(": "+ locations[i].adresse);
-        //     i = i + 1
+                isTrueDepart = true
+            }
+            if (locations[i].adresse.toLowerCase() === inputArrive.current.value.toLowerCase()) {
+                coordArrive['latitude'] = locations[i].latitude
+                coordArrive['longitude'] = locations[i].longitude
+                isTrueArrive = true
+            }
 
-        //     if(locations[i].adresse.toLowerCase() === inputDepart.current.value.toLowerCase()){
-        //         coordDepart['latitude'] = locations[i].latitude
-        //         coordDepart['longitude'] = locations[i].longitude
-        //         // console.log(coordDepart)
-        //         isTrueDepart = true
-        //     }
-        //     if(locations[i].adresse.toLowerCase() === inputArrive.current.value.toLowerCase()){
-        //         coordArrive['latitude'] = locations[i].latitude
-        //         coordArrive['longitude'] = locations[i].longitude
-        //         isTrueArrive = true
-        //         // console.log(coordArrive)
-        //     }
+            if (isTrueArrive === true && isTrueDepart === true) {
+                // updatePoints(coordDepart)
+                // updatePoints(coordArrive)
+                // points[0] = coordDepart
+                // points[1] = coordArrive
+                isTrueLocation = true
 
-        //     if(isTrueArrive === true && isTrueDepart === true){
-        //         isTrueLocation = true
-        //     }
-        // }
+                break
+            }
 
-        // if(isTrueLocation === true){
-        //     axios.post('http://localhost:4000/tarification', {
-        //         jour: inputJour.current.value,
-        //         periode: inputPeriode.current.value,
-        //         // depart: coordDepart,
-        //         // arrive: coordArrive
-        //         depart: inputDepart.current.value,
-        //         arrive: inputArrive.current.value,
-        //     })
-        //     .then((response) => {
-        //         setPredictionCout(response.data['predict'])
-        //         console.log(btnPredictClicked)
-        //         console.log(predictionCout)
-        //     })
-        // }else{
-        //     alert('Impossible de trouver votre localisation')
-        // }
-        setBtnPredictClicked(true)
-
-        if (btnPredictClicked === true) {
-            scrollToRef(refRecommandation)
+            i = i + 1
         }
-        axios.post('http://localhost:4000/tarification', {
-            jour: inputJour.current.value,
-            periode: inputPeriode.current.value,
-            // depart: coordDepart,
-            // arrive: coordArrive
-            depart: inputDepart.current.value,
-            arrive: inputArrive.current.value,
-        })
-            .then((response) => {
-                setPredictionCout(response.data['predict'])
-                setRecResultData(response.data['predict'])
-                setBtnPredictClicked(true)
-                // console.log(btnPredictClicked)
-                // console.log(predictionCout)
-            })
 
+        if (isTrueLocation === true) {
+            setBtnPredictClicked(true)
+
+            if (btnPredictClicked === true) {
+                scrollToRef(refRecommandation)
+            }
+            axios.post('http://localhost:4000/tarification', {
+                jour: inputJour.current.value,
+                periode: inputPeriode.current.value,
+                depart: coordDepart,
+                arrive: coordArrive,
+                // depart: inputDepart.current.value,
+                // arrive: inputArrive.current.value,
+            })
+                .then((response) => {
+                    setPredictionCout(response.data['predict'])
+                    setRecResultData(response.data['predict'])
+                    setBtnPredictClicked(true)
+                    setIsGettingResult(true)
+                })
+        }
+        clearform()
     }
 
     return (<React.Fragment>
@@ -216,12 +241,12 @@ function Tarification() {
 
                         <div className="container-search-item col-lg-3 col-md-5">
                             <label>Depart</label>
-                            <AutocompleteInput locations={allocations} ref={inputDepart} setValue={setDepart} placeholder="Depart" />
+                            <AutocompleteInput locations={locations} ref={inputDepart} setValue={setDepart} placeholder="Depart" />
                         </div>
 
                         <div className="container-search-item col-lg-3 col-md-5">
                             <label>Arrive</label>
-                            <AutocompleteInput locations={allocations} ref={inputArrive} setValue={setArrive} placeholder="Arrive" />
+                            <AutocompleteInput locations={locations} ref={inputArrive} setValue={setArrive} placeholder="Arrive" />
                         </div>
 
                         <div className="container-search-item col-lg col-md-12">
@@ -250,7 +275,6 @@ function Tarification() {
                     {(((recResultData === null) || (recResultData === undefined)) ? (
                         <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
                     ) : (
-
                         <div className="container-section-result">
                             <div className="container-result-item">
                                 <div className="col-lg-2 t-item-img">
@@ -259,11 +283,11 @@ function Tarification() {
                                 <div className="col-lg-6 t-item-info">
                                     <Icone.GeoAlt color="#56C08B" className="icone" />
                                     <span>Depart</span>
-                                    <h5>{isBtnPredictClicked(inputDepart.current.value)}</h5>
+                                    <h5>{isResultReady(depart)}</h5>
                                     <hr />
                                     <Icone.GeoAlt color="#FF313" className="icone" />
                                     <span>Arrive</span>
-                                    <h5>{isBtnPredictClicked(inputArrive.current.value)}</h5>
+                                    <h5>{isResultReady(arrive)}</h5>
                                     <hr />
                                 </div>
                                 <div className="col-lg-4 t-item-price">
@@ -271,21 +295,62 @@ function Tarification() {
                                         <h6>Cout du transport</h6>
                                         <p>
                                             <Icone.CheckCircleFill color="#FF3131" className="icone" />
-                                            <span className="span">Tarif moyen estime</span>
+                                            <span className="span">TARIF PLUS PROBABLE</span>
                                         </p>
                                         <div className="price-row">
-                                            <h4>{predictiontarif(predictionCout)} FCFA</h4>
+                                            <h4>{isResultReady(predictiontarif(predictionCout).quick)} FCFA</h4>
                                             <button>Accepter</button>
                                         </div>
                                     </div>
                                     <div className="other-price-box">
                                         <div className="">
                                             <h6><Icone.Calendar2Week color="#FF3131" className="icone" />Jour</h6>
-                                            {isBtnPredictClicked(jour)}
+                                            {isResultReady(inputJour.current.value)}
                                         </div>
                                         <div className="">
                                             <h6><Icone.ClockHistory color="#FF3131" className="icone" />Periode</h6>
-                                            {isBtnPredictClicked(periode)}
+                                            {isResultReady(inputPeriode.current.value)}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            
+                            <div className="container-result-item">
+                                <div className="col-lg-2 t-item-img">
+                                    <img className="image" src="./img/car.png" alt="car" />
+                                </div>
+                                <div className="col-lg-6 t-item-info">
+                                    <Icone.GeoAlt color="#56C08B" className="icone" />
+                                    <span>Depart</span>
+                                    <h5>{isResultReady(depart)}</h5>
+                                    <hr />
+                                    <Icone.GeoAlt color="#FF313" className="icone" />
+                                    <span>Arrive</span>
+                                    <h5>{isResultReady(arrive)}</h5>
+                                    <hr />
+                                </div>
+                                <div className="col-lg-4 t-item-price">
+                                    <div className="price-box1">
+                                        <h6>Cout du transport</h6>
+                                        <p>
+                                            <Icone.CheckCircleFill color="#FF3131" className="icone" />
+                                            <span className="span">TARIF MOIN PROBABLE</span>
+                                        </p>
+                                        <div className="price-row1">
+                                            <h4>{isResultReady(predictiontarif(predictionCout).neutre)} FCFA</h4>
+                                            <button>Accepter</button>
+                                        </div>
+                                    </div>
+                                    <div className="other-price-box">
+                                        <div className="">
+                                            <h6><Icone.Calendar2Week color="#FF3131" className="icone" />Jour</h6>
+                                            {isResultReady(inputJour.current.value)}
+                                        </div>
+                                        <div className="">
+                                            <h6><Icone.ClockHistory color="#FF3131" className="icone" />Periode</h6>
+                                            {isResultReady(inputPeriode.current.value)}
                                         </div>
                                     </div>
 

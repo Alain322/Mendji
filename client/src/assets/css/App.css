@@ -1,11 +1,12 @@
 /* Link{
   color: #fff;
 } */
+
 /*
  * Definition des elements de styles par defaut
  */
 
- *{
+* {
   margin: 0;
   padding: 0;
   margin-left: 0;
@@ -14,8 +15,9 @@
   font-family: 'Poppins', sans-serif;
   transition: .6s;
   box-sizing: border-box;
-} 
-.main{
+}
+
+.main {
   margin: 0;
   padding: 0;
   margin-left: 0;
@@ -25,30 +27,34 @@
   transition: .6s;
 }
 
-.kprimary-color{
+.kprimary-color {
   color: #05172F;
 }
-.ksecondary-color{
+
+.ksecondary-color {
   color: #FF3131;
 }
-.kaccent-color{
+
+.kaccent-color {
   color: #6C757D;
 }
-.kaccent-green-color{
+
+.kaccent-green-color {
   color: #0ceb61;
 }
-.kprimary-accent-color{
+
+.kprimary-accent-color {
   color: #FFFFFF;
 }
 
-body{
+body {
   display: inline;
   background: #fff;
   min-height: 240vh;
   border: none;
 }
 
-header, main, footer{
+header, main, footer {
   position: relative;
   display: inline-block;
   width: 100%;
@@ -56,7 +62,7 @@ header, main, footer{
   margin: 0;
 }
 
-.hr-style{
+.hr-style {
   width: fit-content;
 }
 
@@ -69,7 +75,7 @@ header, main, footer{
 
 /* ////////////////////////////////////////////////////////////////// */
 
-.main-nav, .scrolled{
+.main-nav, .scrolled {
   /* color: #F2F2F2; */
   background-color: #fff;
   /* background-color: #F4F7FC; */
@@ -77,40 +83,40 @@ header, main, footer{
   padding: .8em 0px;
   z-index: 110;
 }
-.main-nav{
+
+.main-nav {
   position: relative;
 }
 
 /* IMPORTANT */
-.scrolled{
+
+.scrolled {
   position: fixed;
   top: 0;
   left: 0;
   box-shadow: 0 .1em .2rem #000!important;
 }
 
-
-
-.top-navbar{
+.top-navbar {
   background: #000;
 }
 
-.main-nav .logo, .scrolled .logo{
+.main-nav .logo, .scrolled .logo {
   outline: none;
   margin-left: 4rem;
 }
 
-.main-nav .logo img{
+.main-nav .logo img {
   width: 5.3em;
   margin-left: .3em;
 }
 
-.scrolled .logo img{
+.scrolled .logo img {
   width: 4em;
   margin-left: .2em;
 }
 
-.nav-profil-avatar{
+.nav-profil-avatar {
   position: relative;
   display: flex;
   justify-content: center;
@@ -122,12 +128,12 @@ header, main, footer{
   /* float: right; */
 }
 
-.nav-profil-avatar .icone{
+.nav-profil-avatar .icone {
   font-size: 2em;
   color: #05172F;
 }
 
-.nav-profil-pseudo{
+.nav-profil-pseudo {
   display: none;
 }
 
@@ -135,7 +141,7 @@ header, main, footer{
   color: #FF3131;
 } */
 
-.nav-profil-avatar:hover .nav-profil-pseudo{
+.nav-profil-avatar:hover .nav-profil-pseudo {
   display: block;
   position: absolute;
   text-align: left;
@@ -146,39 +152,41 @@ header, main, footer{
   border-radius: .5em;
 }
 
-.nav-profil-pseudo .span{
+.nav-profil-pseudo .span {
   position: relative;
   padding: .3em 1em;
   text-decoration: none;
   cursor: pointer;
 }
-.nav-profil-pseudo .span:last-child{
+
+.nav-profil-pseudo .span:last-child {
   padding-top: 0px;
 }
-.nav-profil-pseudo .span:hover{
+
+.nav-profil-pseudo .span:hover {
   background: #05172F;
   color: #fff;
   transition: ease-in 500ms;
 }
 
-.navbar-collapse{
+.navbar-collapse {
   justify-content: right;
   margin-right: 3em;
 }
 
 /************ ***********/
 
-
-nav .navbar-nav li a{
+nav .navbar-nav li a {
   /* color: white !important;  */
   /* color: red !important; */
   color: #05172F !important;
-	text-decoration: none;
-	font-size: 1rem;
+  text-decoration: none;
+  font-size: 1rem;
   font-weight: bold;
-	opacity: .8;
-	transition: .3s;
+  opacity: .8;
+  transition: .3s;
 }
+
 /* 
 .nav-link{  
 	text-decoration: none;
@@ -186,13 +194,13 @@ nav .navbar-nav li a{
 	transition: .3s;
 } */
 
-.nav-link:hover{  
-	/* letter-spacing: 0.05em; */
+.nav-link:hover {
+  /* letter-spacing: 0.05em; */
   color: #05172F;
-	opacity: 1;
+  opacity: 1;
 }
 
-.conn-btn{
+.conn-btn {
   text-decoration: none;
   color: #05172F;
   border: solid 1px #05172F;
@@ -204,13 +212,14 @@ nav .navbar-nav li a{
   margin-left: 2em;
 }
 
-.conn-btn:hover{
+.conn-btn:hover {
   background-color: #FF3131;
   border: solid 1px #FF3131;
   color: #FFF;
 }
 
 /* @override bootstrap  (Modification de la nav) */
+
 .navbar {
   color: #FFF;
   margin-bottom: 0px;
@@ -223,6 +232,7 @@ button i {
   color: #05172F;
   margin: -10px;
 }
+
 .cercle {
   border-radius: 100%;
   background-color: #F8B241;
@@ -230,64 +240,75 @@ button i {
   margin-left: calc((100% - 760px)/12);
   margin-right: calc((100% - 760px)/12);
 }
+
 .trait {
   height: 3px;
   width: 250px;
   background-color: #F8B241;
 }
+
 /* style additionnel: centrage */
+
 .ligne-circle {
   margin-left: 0;
   margin-right: 0;
   /* align-items: center; */
   text-align: center;
 }
+
 /* @ovveride old style */
+
 .ligne .trait, .ligne .cercle {
   display: inline-block;
   vertical-align: middle;
 }
+
 /* End @override nav */
-.pub-container{
+
+.pub-container {
   position: relative;
   width: 100%;
   display: block;
   background-size: 100%;
   justify-items: start;
-  height: 61ch; 
+  height: 61ch;
   font-family: 'Yu Gothic UI', 'Arial Black', Arial, sans-serif;
   /* background: linear-gradient(90deg, rgba(5,23,47,0.76234243697479) 0%, rgba(8,117,181,0.12648809523809523) 100%, rgba(2,0,36,1) 180%); */
   /* background: #05172F; */
 }
-.pub-bg-img, .pub-bg-left, .pub-bg-rigth{
+
+.pub-bg-img, .pub-bg-left, .pub-bg-rigth {
   position: absolute;
   bottom: 5em;
   top: -5em;
   left: 0;
   right: 0;
 }
-.pub-bg-img{
+
+.pub-bg-img {
   right: 0;
   background: url(../../../public/transport-cmr.jpg) center center/cover;
   border: solid 1px #000;
 }
 
-.pub-bg-left{  
+.pub-bg-left {
   right: 30%;
   background-color: rgba(0, 0, 0, .8);
 }
 
-.pub-bg-rigth{  
+.pub-bg-rigth {
   position: absolute;
   left: 70%;
   /* background-color: rgba(230, 0, 0, .8); */
   background: #FAB92E;
 }
-.pub-box{
+
+.pub-box {
   margin: 5em;
   height: calc(100% - 10em);
   color: #FFFFFF;
 }
+
 .pub-container .left-pub {
   position: relative;
   display: flex;
@@ -298,7 +319,7 @@ button i {
   height: 100%;
 }
 
-.pub-container .rigth-pub{
+.pub-container .rigth-pub {
   position: relative;
   border-radius: 2em;
   height: calc(100% + 10em);
@@ -310,6 +331,7 @@ button i {
   font-weight: lighter;
   padding-right: 4em;
 }
+
 .pub-container h1 {
   font-size: 38pt;
   font-family: 'Yu Gothic UI';
@@ -334,22 +356,26 @@ button i {
   display: flex;
   justify-content: center;
   text-align: center;
-  font-size: 16pt;
-  font-weight: bolder;
   color: #05172F;
-  font-family: 'Yu Gothic UI', 'Arial Black', Arial, sans-serif;
 }
 
-.more-service{
+.title-service h1 {
+  font-size: 30pt;
+  font-weight: 900;
+  font-family: 'Yu Gothic UI', sans-serif;
+}
+
+.more-service {
   width: 85%;
   margin-right: auto;
   margin-left: auto;
   margin-top: 2em;
   color: #05172F;
+  justify-content: center;
   /* background: #05172F; */
 }
 
-.single-service{
+.single-service {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -391,24 +417,25 @@ button i {
   color: #05172F;
 } */
 
-.single-service:hover{
+.single-service:hover {
   position: relative;
   top: -1em;
 }
 
-.single-service h4{
+.single-service h4 {
   font-weight: bold;
 }
+
 /* .single-service:hover:before h5{
   color: #05172F;
 } */
 
-.single-service .ico{
+.single-service .ico {
   margin: 1em auto;
   color: #FF3131;
 }
 
-.single-service:hover .ico{
+.single-service:hover .ico {
   margin: 1em auto;
   color: #05172F;
   margin: 1.2em auto;
@@ -425,11 +452,9 @@ button i {
   border-radius: 50%;
 }
 
-
-
 /* 00000000000000000000000000000000000000000000000000000000 */
 
-.tarif-section, .trajet-section{ 
+.tarif-section, .trajet-section {
   width: 94%;
   display: flex;
   position: relative;
@@ -441,14 +466,16 @@ button i {
   padding: 3em 0px;
 }
 
-.trajet-section .image, .tarif-section .image{
+.trajet-section .image, .tarif-section .image {
   width: 100%;
 }
 
 /*                     */
+
 .textB {
   color: #404040;
 }
+
 .temps div, .intemperie div {
   display: inline-block;
   margin-right: 10px;
@@ -458,6 +485,7 @@ button i {
   width: fit-content;
   font-weight: bold;
 }
+
 .tarif-section hr, .trajet-section hr {
   width: 40%;
   height: 4px;
@@ -465,14 +493,15 @@ button i {
   opacity: 1;
 }
 
-
 /* bouton par defaut */
-.button{
+
+.button {
   background-color: #05172F;
   color: white;
   font-weight: bold;
   transition: all 0.3s ease;
 }
+
 .button:hover {
   background-color: #FFF;
   color: #05172F;
@@ -482,8 +511,7 @@ button i {
 
 /* /////////////////////////////////////////////////// */
 
-
-.pub-section{
+.pub-section {
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -493,62 +521,68 @@ button i {
   background-color: #05172F;
 }
 
-.pub-section-left, .pub-section-right{
+.pub-section-left, .pub-section-right {
   width: 100%;
 }
 
 /* /////////////////////////////////////////////////// */
 
-.univ-main{
+.univ-main {
   justify-content: center;
   margin: 3em 0px;
 }
-.univ-text, .univ-img{
+
+.univ-text, .univ-img {
   /* border: #000 solid 1px; */
   position: relative;
 }
 
-.univ-text{
+.univ-text {
   padding: 8em 0px;
 }
-.univ-img{
+
+.univ-img {
   position: relative;
 }
 
-.univ-img .image{
+.univ-img .image {
   width: 100%;
   height: 80%;
   border-radius: 1.6em;
 }
-.univ-img-points{
+
+.univ-img-points {
   position: absolute;
   top: -1em;
   left: -2em;
   height: 4em;
   width: 4em;
 }
+
 /* .univ-img-small, .univ-img-big, .univ-img-points{
   border-radius: 2em;
 } */
-.univ-img-small{
+
+.univ-img-small {
   position: absolute;
   bottom: 0;
   right: 0;
   height: 12em;
 }
 
-.univ-img-big{
+.univ-img-big {
   margin-top: 5em;
   margin-right: 5em;
   bottom: 0;
   height: calc(100% - 5em);
   position: relative;
 }
+
 /* /////////////////////////////////////////////////// */
+
 .footer {
   display: block;
   position: relative;
-  
   width: 100%;
   align-items: bottom;
   text-align: bottom;
@@ -559,7 +593,8 @@ button i {
   margin-right: 0;
   bottom: 0;
 }
-.footer .penche{
+
+.footer .penche {
   position: relative;
   background-color: #05172F;
   height: 180px;
@@ -582,17 +617,18 @@ button i {
   background-size: 100%;
 }
 
-.footer .img-fluid{
+.footer .img-fluid {
   width: 100%;
 }
+
 .footer span {
   color: #fff;
   font-weight: bold;
 }
+
 .ask img {
   width: 100%;
   height: auto;
 }
 
 /* bete cercle de bomba #F8B241 */
-

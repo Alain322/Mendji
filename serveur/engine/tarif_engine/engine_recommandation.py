@@ -7,15 +7,10 @@ import json
 from geopy.geocoders import Nominatim 
 from math import *
 
-
-
 app = Flask(__name__)
 
-model = pickle.load(open('engine_tarif_recomandation.pkl', 'rb'))
+model = pickle.load(open('up_tarif_engine_uptodate.pkl', 'rb'))
 
-
-# mteest = pd.DataFrame(np.array([[data['periode'], data['depart'], data['arrive'], '', 0,'']]), 
-#                           columns=['Periode', 'Depart', 'Arrivee', 'Trafic', 'Duree', 'Route'])
 def distance_location(lat1, lon1, lat2, lon2):
     R = 6372.8
     dLat = radians(lat2 - lat1)
@@ -29,15 +24,15 @@ def distance_location(lat1, lon1, lat2, lon2):
 @app.route('/flask', methods=['GET'])
 def prediction():
     data = request.get_json() 
-    # distance = distance_location(data['depart']['latitude'], data['depart']['longitude'], data['arrive']['latitude'], data['arrive']['longitude'])
-    # mteest = pd.DataFrame(np.array([[distance, data['periode'], 2]]), 
-    #                       columns=['distance', 'Periode', 'Route'])
-    # mteest = pd.DataFrame(np.array([[data['depart']['latitude'], data['depart']['longitude'], data['arrive']['latitude'], data['arrive']['longitude'], distance, data['periode'], 2]]), columns=['Longitude_d', 'Latitude_d', 'Longitude_a', 'Latitude_a', 'distance', 'Route', 'Periode'])
-    mteest = pd.DataFrame(np.array([[data['periode'], data['depart'], data['arrive'], '', 0,'']]), 
-                          columns=['Periode', 'Depart', 'Arrivee', 'Trafic', 'Duree', 'Route'])
+    distance = distance_location(
+        float(data['depart']['latitude']), 
+        float(data['depart']['longitude']),  
+        float(data['arrive']['latitude']), 
+       float(data['arrive']['longitude']))
+    mteest = pd.DataFrame(np.array([[distance,  data['jour'], data['periode']]]), 
+                          columns=['distance', 'Jour', 'Periode'])
     mode = model.predict(mteest)
     return json.dumps({'result': mode[0, 0].round(decimals=0, out=None)})
-    # print(data['depart']['latitude'])
     
 @app.route('/itineraireinfos', methods=['GET'])
 def itineraireinfos():
@@ -45,7 +40,6 @@ def itineraireinfos():
     
     nomination = Nominatim(user_agent='Noned')
     location = request.get_json() 
-    
     depart = nomination.geocode(location['depart'] + ", Yaounde", timeout=1)
     arrive = nomination.geocode(location['arrive'] + ", Yaounde", timeout=1)
     

@@ -18,7 +18,8 @@ var expiryDate = new Date(Date.now() + 60 * 60 * 100);
 
 connexion.get('/connexion', async (request, response) => {
     try {
-        console.log('')
+        // console.log(" <-> " + request.session.user)
+        // console.log('')
     }
     catch (error) {
         response.status(400).json({ 'error': `${error}` })
@@ -32,10 +33,6 @@ connexion.post('/connexion', (req, res) => {
     const userinfos = []
     const ctoken = md5(cname + '' + Math.random() + '' + req.body.cpassw)
 
-    // console.log()
-    // console.log(cpassw)
-    // req.session.user = { pseudo: cname, token: md5('' + Math.random() + '') }
-    console.log(req.session)
     try {
         results = controler.updateToken(cname, cpassw, ctoken)
         results.then((result) => {
@@ -45,6 +42,7 @@ connexion.post('/connexion', (req, res) => {
                     token: result[0].utoken,
                     state: 'success'
                 })
+                req.session.user = { pseudo: cname, token: ctoken }
             }
             else {
                 res.send({

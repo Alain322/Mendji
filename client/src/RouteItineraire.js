@@ -73,7 +73,7 @@ function Itineraire() {
         e.preventDefault()
         setBtnPredictClicked(true)
 
-                
+        setPoints([])
         let isTrueLocation = false
         let isTrueDepart = false
         let isTrueArrive = false
@@ -98,28 +98,17 @@ function Itineraire() {
             if(isTrueArrive === true && isTrueDepart === true){
                 updatePoints(coordDepart)
                 updatePoints(coordArrive)
-                // points.push(coordDepart)
-                // points.push(coordArrive)
+                // points[0] = coordDepart
+                // points[1] = coordArrive
                 isTrueLocation = true
+
+                break
             }
 
             i = i + 1
         }
 
         if(isTrueLocation === true){
-            // axios.post('http://localhost:4000/tarification', {
-            //     jour: inputJour.current.value,
-            //     periode: inputPeriode.current.value,
-            //     // depart: coordDepart,
-            //     // arrive: coordArrive
-            //     depart: inputDepart.current.value,
-            //     arrive: inputArrive.current.value,
-            // }).then((response) => {
-            //     setPredictionCout(response.data['predict'])
-            //     console.log(btnPredictClicked)
-            //     console.log(predictionCout)
-            // })
-            // console.log(coordDepart, '\t', coordArrive)
             scrollToRef(refStartMap)
             isTrueLocation = false
         }else{

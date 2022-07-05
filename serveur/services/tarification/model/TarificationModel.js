@@ -1,18 +1,18 @@
 
-// require('express')
+require('express')
 
-const getNumericDay = (mday ) => {
+const getNumericDay = (mday) => {
 
     let num_day = 7
 
     if( mday === 'Mardi'){
-        num_day = 4
+        num_day = 5
     }
     else if (mday === 'Mercredi'){
         num_day = 3
     }
     else if (mday === 'Jeudi'){
-        num_day = 5
+        num_day = 4
     }
     else if (mday === 'Vendredi'){
         num_day = 6
@@ -58,25 +58,25 @@ const getNumericPeriod = (mperiode ) => {
     let periode = 5
 
     if( mperiode === '06H-10H'){
-        periode = 8
+        periode = 10
     }
     else if( mperiode === '10H-12H'){
-        periode = 4
-    }
-    else if( mperiode === '12H-16H'){
         periode = 5
     }
+    else if( mperiode === '12H-16H'){
+        periode = 6
+    }
     else if( mperiode === '16H-18H'){
-        periode = 8
+        periode = 10
     }
     else if( mperiode === '18H-20H'){
         periode = 9
     }
     else if( mperiode === '20H-22H'){
-        periode = 4
+        periode = 7
     }
     else if( mperiode === '22H-6H'){
-        periode = 10
+        periode = 11
     }
 
     return periode

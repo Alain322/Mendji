@@ -54,8 +54,8 @@ function Home(){
                 <div className="col-lg-3 col-md-4 col-sm-12 col-12">
                     <div className="single-service">
                         <img className="img" src="./img/drive.svg" aria-label="Je veux un itinéraire" />
-                        <h4>Itineraire</h4>
-                        <p className="card-title"> Je veux un itinéraire </p>
+                        <h4>Je suis conducteur</h4>
+                        <p className="card-title"> Je recherche un itinéraire </p>
                         <Icone.ArrowRight className="ico"/>
                     </div>
                 </div>
@@ -71,19 +71,19 @@ function Home(){
                 <div className="col-lg-3 col-md-4 col-sm-12 col-12">
                     <div className="single-service">
                         <img className="img" src="./img/svg.svg" aria-label="Je veux voir les tarifs de mon trajet" />
-                        <h4>Itineraire</h4>
-                        <p className="card-title"> Je veux voir les tarifs de mon trajet </p>
+                        <h4>Mes tarifs</h4>
+                        <p className="card-title"> Je veux une recommandation du prix de mon trajet </p>
                         <Icone.ArrowRight className="ico"/>
                     </div>
                 </div>
-                <div className="col-lg-3 col-md-4 col-sm-12 col-12">
+                {/* <div className="col-lg-3 col-md-4 col-sm-12 col-12">
                     <div className="single-service">
                         <img className="img" src="./img/svg.svg" aria-label="Je veux voir les tarifs de mon trajet" />
-                        <h4>Itineraire</h4>
+                        <h4>Even</h4>
                         <p className="card-title"> Je veux voir les tarifs de mon trajet </p>
                         <Icone.ArrowRight className="ico"/>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
 

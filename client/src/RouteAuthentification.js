@@ -67,6 +67,8 @@ function Authentification() {
                     Session.set('token', response.data.token);
                     Session.set('state', response.data.state);
 
+                    localStorage.setItem('state', JSON.stringify({ 'state': response.data.state, 'pseudo': response.data.pseudo, 'token': response.data.token }))
+
                     history.push('/home');
                 }
             })

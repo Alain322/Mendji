@@ -1,6 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt')
-const controler = require('../controler/AuthentificationControler')
+const controler = require('../controler/AuthentificationControler');
+const { session } = require('neo4j-driver');
 
 const connexion = express.Router();
 
@@ -9,7 +10,7 @@ const SALT_PASS_ROUND = 2
 connexion.get('/session', async(request, response) =>{
     try 
     {
-        console.log('')
+        // res.send()
     }
     catch (error) {
         response.status(400).json({'error': `${error}`})
