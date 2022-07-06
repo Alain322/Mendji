@@ -579,22 +579,21 @@ button i {
 }
 
 /* /////////////////////////////////////////////////// */
-
 .footer {
   display: block;
   position: relative;
+  background-color: #05172F;
+  /* height: 200px; */
   width: 100%;
   align-items: bottom;
   text-align: bottom;
   color: #a7a7a7;
   font-weight: bold;
-  margin-bottom: -200px;
+  margin-bottom: 0;
   margin-left: 0;
   margin-right: 0;
-  bottom: 0;
 }
-
-.footer .penche {
+.footer .penche{
   position: relative;
   background-color: #05172F;
   height: 180px;
@@ -608,27 +607,25 @@ button i {
 .footer footer {
   text-align: center;
   height: 200px;
-  /* background-color: #05172F; */
+  background-color: #05172F;
   border-bottom: 3px #FF3131 solid;
-  /* background: url(../../../public/img/footer-mark.png) center center/cover; */
-  /* background-image: url(../../../public/img/footer_bg.svg); */
+  background: url(../../../public/img/footer-mark.png) center center/cover;
+  background-image: url(../../../public/img/footer_bg.svg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 100%;
 }
 
-.footer .img-fluid {
+/* .footer .img-fluid{
   width: 100%;
 }
-
 .footer span {
   color: #fff;
   font-weight: bold;
 }
-
 .ask img {
   width: 100%;
   height: auto;
-}
+} */
 
 /* bete cercle de bomba #F8B241 */

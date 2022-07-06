@@ -100,9 +100,15 @@ function Tarification() {
         neutre = cout
 
         if (rest < 25) {
-            quick = cout - rest
+            quick = cout - (rest + 50) + 50
             neutre = cout - (50 + rest)
-        } else {
+        } 
+        else if(rest >= 20 && rest < 40) {
+            quick = cout - rest
+            neutre = cout - (50 + rest) + 50
+        }
+        
+        else {
             quick = (50 - rest) + cout
             neutre = cout - rest
         }
@@ -114,6 +120,22 @@ function Tarification() {
         if (quick < 100 || quick === neutre) {
             quick = neutre + 50
         }
+
+        // if (rest < 25) {
+        //     quick = cout - rest
+        //     neutre = cout - (50 + rest)
+        // } else {
+        //     quick = (50 - rest) + cout
+        //     neutre = cout - rest
+        // }
+
+        // if (neutre < 100) {
+        //     neutre = 100
+        // }
+
+        // if (quick < 100 || quick === neutre) {
+        //     quick = neutre + 50
+        // }
 
         return { 'quick': quick, 'neutre': neutre }
     }
@@ -336,7 +358,7 @@ function Tarification() {
                                         <h6>Cout du transport</h6>
                                         <p>
                                             <Icone.CheckCircleFill color="#FF3131" className="icone" />
-                                            <span className="span">TARIF MOIN PROBABLE</span>
+                                            <span className="span">TARIF MOYEN ESTIME</span>
                                         </p>
                                         <div className="price-row1">
                                             <h4>{isResultReady(predictiontarif(predictionCout).neutre)} FCFA</h4>

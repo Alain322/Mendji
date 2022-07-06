@@ -57,23 +57,23 @@ function Itineraire() {
         setBtnPredictClicked(false)
     }, [])
 
-    const [points, setPoints] = useState([])
-    const updatePoints = (pts) => {
-        let pnts = []
-        pnts = points
-        pnts.push(pts)
-        setPoints(pnts)
-    }
-    // const points = [
-    //     {'latitude': 3.9328292, 'longitude': 11.5223294843}, 
-    //     {'latitude': 3.9149771, 'longitude': 11.5252810487}
-    // ]
+    // const [points, setPoints] = useState([])
+    // const updatePoints = (pts) => {
+    //     let pnts = []
+    //     pnts = points
+    //     pnts.push(pts)
+    //     setPoints(pnts)
+    // }
+    const points = [
+        {'latitude': 3.9328292, 'longitude': 11.5223294843}, 
+        {'latitude': 3.9149771, 'longitude': 11.5252810487}
+    ]
     /* Envoie des donnees vers le server */
     const sendDataRecommandation = async(e) => {
         e.preventDefault()
         setBtnPredictClicked(true)
 
-        setPoints([])
+                
         let isTrueLocation = false
         let isTrueDepart = false
         let isTrueArrive = false
@@ -96,13 +96,11 @@ function Itineraire() {
             }
 
             if(isTrueArrive === true && isTrueDepart === true){
-                updatePoints(coordDepart)
-                updatePoints(coordArrive)
-                // points[0] = coordDepart
-                // points[1] = coordArrive
+                // updatePoints(coordDepart)
+                // updatePoints(coordArrive)
+                points.push(coordDepart)
+                points.push(coordArrive)
                 isTrueLocation = true
-
-                break
             }
 
             i = i + 1
