@@ -27,18 +27,18 @@ trajet.get('/itineraire', cors(), async(req, res) => {
 
 trajet.post('/itineraire', async(req, res) => {
   var jour = req.body.jour
-  var depart = req.body.depart
   var periode = req.body.periode
-  var arrive = req.body.arrive
-
-//   console.log(`Jour: ${jour} \nPeriode: ${periode}`)
+  var dept = req.body.depart
+  var arr = req.body.arrive
+  var depart =req.body.coordDepart
+  var arrive =req.body.coordArrive
 
 const options = {
     url: 'http://127.0.0.1:5000/itineraireinfos',
     headers: {
       'User-Agent': 'request'
     },
-    body: {depart: depart, arrive: arrive},
+    body: {depart: depart, arrive: arrive, dept: dept, arr: arr},
     json: true
 };
    

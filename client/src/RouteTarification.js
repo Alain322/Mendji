@@ -334,11 +334,8 @@ function Tarification() {
                                             {isResultReady(inputPeriode.current.value)}
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-
-                            
                             <div className="container-result-item">
                                 <div className="col-lg-2 t-item-img">
                                     <img className="image" src="./img/car.png" alt="car" />

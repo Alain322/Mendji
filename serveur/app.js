@@ -64,7 +64,7 @@ app.use(
     })
 );
 
-
+app.use('/static', express.static(__dirname + '/public'));
 app.use('/', homeRoute)
 app.use('/', tarificationRoute)
 app.use('/', itineraireRoute)
